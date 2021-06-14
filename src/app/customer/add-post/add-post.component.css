@@ -1,0 +1,95 @@
+.post-bg-Title {
+    width: 100%;
+    height: 70px;
+    background-image: url('../../../assets/img/icon-dang-tin.png');
+    background-position: 103px 5px;
+    background-repeat: no-repeat;
+    text-align: center;
+}
+
+.post-bg-Title h1 {
+    font-size: 20px;
+    text-transform: uppercase;
+    color: #055699;
+    margin-bottom: 0px;
+}
+
+.post-bg-Title2 {
+    font-size: 12.2px;
+}
+
+.rowHeader {
+    width: 100%;
+    background-color: #200985;
+    margin: 0;
+    padding: 0 0 0 5px;
+    height: 40px;
+}
+
+.rowHeader h2{
+    color: white;
+    margin-left: 10px;
+    line-height: 40px;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-family: Calibri;
+}
+
+.rowContent {
+    width: 100%;
+    margin-bottom: 20px;
+    clear: both;
+    border: 1px solid #999;
+    text-rendering: optimizeLegibility;
+}
+
+.rowPost {
+    width: 100%;
+    margin: 20px 30px;
+}
+
+.p-inputtext-sm {
+    width: 500px;
+    font-size: 13px;
+}
+
+.rowPost label{
+    width: 120px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.postrow {
+    width: 100%;
+    float: left;
+    padding-bottom: 5px;
+}
+
+.postrow .base1 {
+    width: 120px;
+    font-size: 12px;
+    margin-left: 30px;
+    float: left;
+}
+
+.postrow .base2 {
+    width: 200px;
+    font-size: 12px;
+    float: left;
+}
+
+.postrow .base4 {
+    width: 200px;
+    font-size: 12px;
+    float: right;
+}
+
+.postrow .base3 {
+    width: 529px;
+    font-size: 12px;
+    float: left;
+}
+
+.p-inputtext-sm2{
+    width: 100%;
+}
