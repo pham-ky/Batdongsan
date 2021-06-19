@@ -49,12 +49,12 @@
 }
 
 .p-inputtext-sm {
-    width: 500px;
+    width: 560px;
     font-size: 13px;
 }
 
 .rowPost label{
-    width: 120px;
+    width: 90px;
     font-size: 13px;
     font-weight: bold;
 }
@@ -66,30 +66,36 @@
 }
 
 .postrow .base1 {
-    width: 120px;
+    width: 90px;
     font-size: 12px;
     margin-left: 30px;
     float: left;
 }
 
 .postrow .base2 {
-    width: 200px;
+    width: 230px;
     font-size: 12px;
     float: left;
 }
 
 .postrow .base4 {
-    width: 200px;
-    font-size: 12px;
-    float: right;
-}
-
-.postrow .base3 {
-    width: 529px;
+    width: 230px;
     font-size: 12px;
     float: left;
 }
 
+.postrow .base3 {
+    width: 580px;
+    font-size: 12px;
+    float: left;
+    margin-bottom: 10px;
+}
+
 .p-inputtext-sm2{
     width: 100%;
+}
+
+.postrow label{
+    font-size: 13px;
+    margin-top: 10px;
 }

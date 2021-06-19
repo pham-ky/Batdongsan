@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../lib/user.service';
 
 @Component({
   selector: 'app-customer',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CustomerComponent implements OnInit {
 
-  constructor() { }
+  user: any;
+  constructor(private _user: UserService) { }
 
   ngOnInit(): void {
+    this._user.user$.subscribe((res)=> {
+      this.user = res;
+      this.user.soDuTk = this.user.soDuTk.toLocaleString('it-IT', { style: 'currency', currency: 'VND' });
+      
+    });
   }
 
 }

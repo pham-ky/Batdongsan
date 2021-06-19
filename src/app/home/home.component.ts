@@ -10,6 +10,7 @@ export class HomeComponent implements OnInit {
   constructor() { }
   title = "Trang chủ - Bất động sản";
   ngOnInit(): void {
+    
   }
 
 }

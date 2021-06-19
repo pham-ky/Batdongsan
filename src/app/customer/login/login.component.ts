@@ -11,6 +11,9 @@ import {
 import { first } from 'rxjs/operators';
 import { error } from '@angular/compiler/src/util';
 import { Router } from '@angular/router';
+
+declare let alertify: any;
+
 export function comparePassword(c: AbstractControl) {
   const v = c.value;
   return v.password === v.confirmPassword
@@ -52,15 +55,14 @@ export class LoginComponent implements OnInit {
       .subscribe(
         (user) => {
           if (user == null) {
-            alert("Đăng nhập thất bại");
+            alertify.error("Đăng nhập thất bại");
             
             this.clearFormLogin();
           } else {
-            alert("Đăng nhập thành công");
-            
+            alertify.success("Đăng nhập thành công");
             setTimeout(() => {
               this.router.navigateByUrl('/home');
-            }, 1000);
+            }, 500);
           }
         },
         (error) => {

@@ -1,0 +1,74 @@
+<div class="row no-gutters">
+    <div class="rowHeader">
+        <h2>Nộp tiền trực tiếp tại văn phòng</h2>
+    </div>
+    <div class="rowContent">
+        <div class="name"
+            style="font-family: 'Feather'!important; font-size: 18px; color: rgb(5, 37, 37); margin-top: 15px; margin-left: 15px;">
+            <span class="fa fa-home"></span> Trụ sở chính tại Hà Nội
+        </div>
+
+        <span class="fa fa-map-marker" style="float: left;  margin-top: 5px; margin-left: 18px;"></span>
+        <div class="address"
+            style="font-family: 'Feather'!important; font-size: 14px; color: rgb(8, 99, 99);  margin-top: 4px; margin-left: 35px;">
+            Tầng 31, Keangnam Hanoi Landmark Tower, khu E6, phường Mễ Trì, quận Nam Từ Liêm, TP. Hà
+            Nội
+        </div>
+        <div class="mobile"
+            style="font-family: 'Feather'!important; font-size: 18px; color: rgb(255, 4, 4); font-weight: bold; margin-left: 8%; margin-top: 5px; margin-bottom: 15px;">
+            <span class="fa fa-mobile-phone"></span> 1900 1881
+        </div>
+        <div class="clear separate" style="clear: both; border-bottom: 1px dashed #ccc; height: 5px;"></div>
+        <div class="name"
+            style="font-family: 'Feather'!important; font-size: 18px; color: rgb(5, 37, 37);  margin-top: 15px; margin-left: 15px;">
+            <span class="fa fa-home"></span> Chi nhánh tại Hải Phòng
+        </div>
+        <span class="fa fa-map-marker" style="float: left;  margin-top: 5px; margin-left: 18px;"></span>
+        <div class="address"
+            style="font-family: 'Feather'!important; font-size: 14px; color: rgb(8, 99, 99);  margin-top: 4px; margin-left: 35px;">
+            Phòng 502, TD Business Center, lô 20A Lê Hồng Phong, quận Ngô Quyền, TP. Hải Phòng
+        </div>
+        <div class="phone"
+            style="font-family: 'Feather'!important; font-size: 18px; color: rgb(255, 4, 4); font-weight: bold; margin-left: 8%; margin-top: 5px; margin-bottom: 15px;">
+            <span class="fa fa-phone"></span> (0225) 3 246 848
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="rowHeader">
+        <h2>Chuyển khoản thông thường</h2>
+    </div>
+    <div class="rowContent">
+        <h6 style="margin-left: 5%; margin-top: 15px;">Thông tin ngân hàng</h6>
+        <table>
+            <tbody>
+                <tr>
+                    <td class="left">Tên ngân hàng</td>
+                    <td class="right">Ngân hàng thương mại cổ phần Quân đội</td>
+                </tr>
+                <tr>
+                    <td class="left">Chi nhánh</td>
+                    <td class="right">PGD Phố Nối, Mỹ Hào, Hưng Yên</td>
+                </tr>
+                <tr>
+                    <td class="left">Người hưởng lợi</td>
+                    <td class="right">Phạm Văn Ký</td>
+                </tr>
+                <tr>
+                    <td class="left">Số tài khoản</td>
+                    <td class="right">838626789</td>
+                </tr>
+                <tr>
+                    <td class="left">Cú pháp nội dung <br> chuyển khoản</td>
+                    <td class="right">{{user.maTk}} < Noi dung thanh toan> <br>
+                            Ví dụ: {{user.maTk}} nap tien dang tin cho SDT 09xxxxxxx</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="notes">
+            <label style="font-weight: bold; color: red;">Lưu ý:</label>
+            {{user.maTk}} là mã chuyển khoản của riêng bạn. Hệ thống của chúng tôi sẽ căn cứ trên mã này để tự động xử
+            lý giao dịch. Do vậy, bạn vui lòng <b>nhập đúng mã {{user.maTk}} ở đầu nội dung chuyển khoản</b> để việc xác
+            nhận giao dịch được nhanh chóng và chính xác.
+        </div>
+    </div>
+</div>

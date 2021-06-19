@@ -4,6 +4,7 @@ import { AddPostComponent } from './add-post/add-post.component';
 import { CustomerComponent } from './customer.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from '../lib/auth.guard';
+import { NaptienComponent } from './naptien/naptien.component';
 
 const routes: Routes = [
   {
@@ -15,10 +16,10 @@ const routes: Routes = [
         component: AddPostComponent,
         canActivate: [AuthGuard],
       },
-      // {
-      //   path: '',
-      //   component: ,
-      // },
+      {
+        path: 'naptien',
+        component: NaptienComponent,
+      },
     ]
   },
   {

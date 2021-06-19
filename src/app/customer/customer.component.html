@@ -1,77 +1,116 @@
-
 <div class="clearfix"></div>
 
-<!-- LISTING LIST -->
 <section>
     <div class="profile__agency">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4">
-                    <!-- ARCHIVE CATEGORY -->
+
                     <div class=" wrapper__list__category ">
-                        <!-- CATEGORY -->
                         <div class="widget widget__archive">
-                            <div class="widget__title">
-                                <h5 class="text-dark mb-0 text-center">Categories Property</h5>
+                            <div class="widget__title" *ngIf="user.hoTen==''">
+                                <h5 class=" mb-0 text-center">{{user.taiKhoan}}</h5>
+                                <span style="top: 20px; position: relative;    padding-left: 20px;">Số dư tài khoản:
+                                    <span style="font-weight: bold; color: blue;"> {{user.soDuTk}}</span></span><br>
+                                <span style="top: 20px; position: relative;    padding-left: 20px;">Mã chuyển khoản:
+                                    <span style="font-weight: bold; color: blue;">
+                                        {{user.maTk}}</span></span><br>
+                                <a routerLink="/customer/naptien"
+                                    style="text-decoration: none;top: 20px; position: relative;margin-left: 35%;"><button
+                                        pButton type="button" label="Nạp tiền"></button></a>
                             </div>
+                            <div class="widget__title" *ngIf="user.hoTen!=''">
+                                <h5 class=" mb-0 text-center" style="color: blueviolet;">{{user.hoTen}}</h5>
+                                <span style="top: 20px; position: relative;    padding-left: 20px;">Số dư tài khoản:
+                                    <span style="font-weight: bold; color: blue;"> {{user.soDuTk}}</span></span><br>
+                                <span style="top: 20px; position: relative;    padding-left: 20px;">Mã chuyển khoản:
+                                    <span style="font-weight: bold; color: blue;">
+                                        {{user.maTk}}</span></span><br>
+                                <a routerLink="/customer/naptien"
+                                    style="text-decoration: none;top: 20px; position: relative;margin-left: 35%;"><button
+                                        pButton type="button" label="Nạp tiền"></button></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="download mb-0">
+                        <h5 class="text-center text-capitalize">Quản lý thông tin cá nhân</h5>
+                    </div>
+                    <div class=" wrapper__list__category ">
+                        <div class="widget widget__archive">
                             <ul class="list-unstyled">
                                 <li>
                                     <a href="#" class="text-capitalize">
-                                        apartement
-                                        
+                                        Thay đổi thông tin cá nhân
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#" class="text-capitalize">
-                                        villa
-                                        
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="text-capitalize">
-                                        family house
-                                        
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="text-capitalize">
-                                        modern villa
-                                        
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="text-capitalize">
-                                        town house
-                                        
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="text-capitalize">
-                                        office
-                                        
+                                        Thay đổi mật khẩu
                                     </a>
                                 </li>
                             </ul>
                         </div>
-                        <!-- END CATEGORY -->
                     </div>
-                    <!-- End ARCHIVE CATEGORY -->
+
                     <div class="download mb-0">
-                        <h5 class="text-center text-capitalize">Property Attachments</h5>
-                        
-                        
+                        <h5 class="text-center text-capitalize">Quản lý tin rao</h5>
                     </div>
+                    <div class=" wrapper__list__category ">
+                        <div class="widget widget__archive">
+                            <ul class="list-unstyled">
+                                <li>
+                                    <a href="#" class="text-capitalize">
+                                        Quản lý tin rao bán/cho thuê
+                                    </a>
+                                </li>
+                                <li>
+                                    <a routerLink="/customer/add-post" class="text-capitalize">
+                                        Đăng tin rao bán/cho thuê
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text-capitalize">
+                                        Quản lý tin cần mua/cần thuê
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text-capitalize">
+                                        Đăng tin cần mua/cần thuê
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="download mb-0">
+                        <h5 class="text-center text-capitalize">Quản lý tài chính</h5>
+                    </div>
+                    <div class=" wrapper__list__category ">
+                        <div class="widget widget__archive">
+                            <ul class="list-unstyled">
+                                <li>
+                                    <a href="#" class="text-capitalize">
+                                        Lịch sử giao dịch
+                                    </a>
+                                </li>
+                                <li>
+                                    <a [routerLink]="['/customer/naptien']" class="text-capitalize">
+                                        Nạp tiền
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
 
                 </div>
                 <div class="col-lg-8">
                     <router-outlet></router-outlet>
-                    
+
                 </div>
-            
+
             </div>
         </div>
     </div>
 </section>
-
-<!-- END LISTING LIST -->
-

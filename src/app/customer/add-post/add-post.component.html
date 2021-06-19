@@ -2,7 +2,8 @@
     <div class="post-bg-Title mgt10">
         <h1>Đăng tin rao bán, cho thuê nhà đất</h1>
         <div>
-            <span class="post-bg-Title2">(Quý vị nhập thông tin nhà đất cần bán hoặc cho thuê vào các mục dưới đây)</span>
+            <span class="post-bg-Title2">(Quý vị nhập thông tin nhà đất cần bán hoặc cho thuê vào các mục dưới
+                đây)</span>
         </div>
     </div>
     <div class="rowHeader">
@@ -11,7 +12,7 @@
     <div class="rowContent">
         <div class="rowPost">
             <label>Tiêu đề <span>(*)</span>:</label>
-            <input type="text" pInputText class="p-inputtext-sm">         
+            <input type="text" [(ngModel)]="tieude" style="height: 42px;" pInputText class="p-inputtext-sm">
             <span style="font-size: 13px;"> 99</span>
         </div>
         <div class="postrow">
@@ -19,44 +20,78 @@
                 <label>Hình thức <span>(*)</span>:</label>
             </div>
             <div class="base2">
-                <input type="text" pInputText class="p-inputtext-sm1">
-                <!-- <p-dropdown [options]="cities" [(ngModel)]="selectedCityCode" optionLabel="name" optionValue="code"></p-dropdown> -->
-                <input type="text" [(ngModel)]="myValue">
-                <label for="">{{myValue}}</label>
+                <p-dropdown [style]="{'width': '100%'}"
+                 [options]="HinhThuc" [(ngModel)]="selectedHT" [showClear]="true" optionLabel="tenHinhThuc" placeholder="Hình thức" (onChange)="selectLoai()"></p-dropdown>
             </div>
             <div class="base1">
                 <label>Loại <span>(*)</span>:</label>
             </div>
             <div class="base4">
-                <input type="text" pInputText class="p-inputtext-sm1">
+                <p-dropdown [style]="{'width': '100%'}"
+                 [options]="LoaiBDS" [(ngModel)]="selectedLoai" [showClear]="true" optionLabel="tenLoaiBds" placeholder="Loại"></p-dropdown>
             </div>
         </div>
         <div class="postrow">
             <div class="base1">
-                <label>Tỉnh/Thành phố <span>(*)</span>:</label>
+                <label>Tỉnh/TP <span>(*)</span>:</label>
             </div>
             <div class="base2">
-                <input type="text" pInputText class="p-inputtext-sm1">
+                <p-dropdown [style]="{'width': '100%'}"
+                 [options]="TinhTP" [(ngModel)]="selectedTinhTP" optionLabel="ten" [filter]="true" (onChange)="selectQH()"
+                    filterBy="ten" [showClear]="true" placeholder="Tỉnh/Thành Phố" class="p-inputtext-sm1">
+                    <ng-template pTemplate="selectedItem">
+                        <div class="country-item country-item-value" *ngIf="selectedTinhTP">
+                            <div>{{selectedTinhTP.ten}}</div>
+                        </div>
+                    </ng-template>
+                </p-dropdown>
             </div>
             <div class="base1">
                 <label>Quận/Huyện <span>(*)</span>:</label>
             </div>
-            <div class="base4">
-                <input type="text" pInputText class="p-inputtext-sm1">
+            <div class="base4" *ngIf="selectedTinhTP!=null">
+                <p-dropdown [style]="{'width': '100%'}"
+                 [options]="QH" [(ngModel)]="selectedQH" optionLabel="ten" [filter]="true" (onChange)="selectXP()"
+                    filterBy="ten" [showClear]="true" placeholder="Quận/Huyện" class="p-inputtext-sm1">
+                    <ng-template pTemplate="selectedItem">
+                        <div class="country-item country-item-value" *ngIf="selectedQH">
+                            <div>{{selectedQH.ten}}</div>
+                        </div>
+                    </ng-template>
+                </p-dropdown>
+            </div>
+            <div class="base4" *ngIf="selectedTinhTP==null">
+                <p-dropdown  [style]="{'width': '100%'}"
+                  [filter]="true" filterBy="ten" [showClear]="true" placeholder="Quận/Huyện" class="p-inputtext-sm1">
+                </p-dropdown>
             </div>
         </div>
         <div class="postrow">
             <div class="base1">
                 <label>Phường/Xã <span>(*)</span>:</label>
             </div>
-            <div class="base2">
-                <input type="text" pInputText class="p-inputtext-sm1">
+            <div class="base2" *ngIf="selectedQH!=null"> 
+                <p-dropdown  [style]="{'width': '100%'}" (onChange)="getDiaChi()"
+                 [options]="XP" [(ngModel)]="selectedXP" optionLabel="ten" [filter]="true"
+                    filterBy="ten" [showClear]="true" placeholder="Xã/Phường" class="p-inputtext-sm1">
+                    <ng-template pTemplate="selectedItem">
+                        <div class="country-item country-item-value" *ngIf="selectedXP">
+                            <div>{{selectedXP.ten}}</div>
+                        </div>
+                    </ng-template>
+                </p-dropdown>
+            </div>
+            <div class="base2" *ngIf="selectedQH==null">
+                <p-dropdown  [style]="{'width': '100%'}"  [filter]="true"
+                    filterBy="ten" [showClear]="true" placeholder="Xã/Phường" class="p-inputtext-sm1">
+                </p-dropdown>
             </div>
             <div class="base1">
                 <label>Diện tích <span>(*)</span>:</label>
             </div>
             <div class="base4">
-                <input type="text" pInputText class="p-inputtext-sm1">
+                <input type="number" [(ngModel)]="dientich" style="width:93%; height: 42px;" pInputText class="p-inputtext-sm1">
+                <span>m²</span>
             </div>
         </div>
         <div class="postrow">
@@ -64,13 +99,14 @@
                 <label>Giá <span>(*)</span>:</label>
             </div>
             <div class="base2">
-                <input type="text" pInputText class="p-inputtext-sm1">
+                <input type="number" [(ngModel)]="gia" style="width:100%; height: 42px;" pInputText class="p-inputtext-sm1">
             </div>
             <div class="base1">
                 <label>Đơn vị <span>(*)</span>:</label>
             </div>
             <div class="base4">
-                <input type="text" pInputText class="p-inputtext-sm1">
+                <p-dropdown [style]="{'width': '100%'}" 
+                 [options]="Donvi" [(ngModel)]="selectedDv" placeholder="Đơn vị" optionLabel="tendonvi"></p-dropdown>
             </div>
         </div>
         <div class="postrow">
@@ -78,9 +114,203 @@
                 <label>Địa chỉ :</label>
             </div>
             <div class="base3">
-                <input type="text" pInputText class="p-inputtext-sm2">
+                <input type="text" [(ngModel)]="diachi" style="height: 42px;" pInputText class="p-inputtext-sm2">
             </div>
         </div>
     </div>
-
+    <div class="rowHeader">
+        <h2>Thông tin mô tả</h2>
+    </div>
+    <div class="rowContent">
+        <div class="postrow" style="margin-left: 30px;margin-top: 10px; padding-bottom: 15px;">
+            <p>(<span>*</span>)<span style="font-size: 13px;">Tối đa chỉ 3000 ký tự</span></p>
+            <textarea style="width: 450px; height: 150px; float: left; font-size: 13px;" maxlength="3000" pInputTextarea [(ngModel)]="mota"></textarea>
+            <div style="float: left; font-size: 13px; padding-left: 5px; text-align: justify; width: 220px;">
+                <div class="text">
+                <img src="https://file4.batdongsan.com.vn/images/Home/images/arrow.png" alt="">
+                Giới thiệu chung về bất động sản của bạn. Ví dụ: Khu nhà có vị trí thuận lợi: Gần công viên, gần trường học ... Tổng diện tích 52m2, đường đi ô tô vào tận cửa.
+                <span style="color: #f00;">Lưu ý: tin rao chỉ để mệnh giá tiền Việt Nam Đồng.</span>
+                </div>
+                </div>
+        </div>
+    </div>
+    <div class="rowHeader">
+        <h2>Thông tin khác</h2>
+    </div>
+    <div class="rowContent">
+        <div class="postrow" style="margin-left: 30px;margin-top: 10px;">
+            <p style="font-size: 13px;">Quý vị nên điền đầy đủ thông tin vào các mục dưới đây để tin đăng có hiệu quả hơn</p>
+        </div>
+        <div class="postrow">
+            <div class="base1">
+                <label>Hướng nhà:</label>
+            </div>
+            <div class="base2">
+                <p-dropdown [style]="{'width': '100%'}" 
+                 [options]="Huong" [(ngModel)]="selectedHuongNha" optionLabel="huong"></p-dropdown>
+            </div>
+            <div class="base1">
+                <label>Hướng ban công:</label>
+            </div>
+            <div class="base4">
+                <p-dropdown [style]="{'width': '100%'}" 
+                 [options]="Huong" [(ngModel)]="selectedHuongBC" optionLabel="huong"></p-dropdown>
+            </div>
+        </div> <div class="postrow">
+            <div class="base1">
+                <label>Số phòng ngủ:</label>
+            </div>
+            <div class="base2">
+                <input type="number" [(ngModel)]="sophongngu" style="width:100%; height: 42px;" pInputText class="p-inputtext-sm1">
+            </div>
+            <div class="base1">
+                <label>Số phòng tắm:</label>
+            </div>
+            <div class="base4">
+                <input type="number" [(ngModel)]="sophongtam" style="width:100%; height: 42px;" pInputText class="p-inputtext-sm1">
+            </div>
+        </div> <div class="postrow">
+            <div class="base1">
+                <label>Số phòng WC:</label>
+            </div>
+            <div class="base2">
+                <input type="number" [(ngModel)]="sophongwc" style="width:100%; height: 42px;" pInputText class="p-inputtext-sm1">
+            </div>
+            <div class="base1">
+                <label>Số tầng:</label>
+            </div>
+            <div class="base4">
+                <input type="number" [(ngModel)]="sotang" style="width:100%; height: 42px;" pInputText class="p-inputtext-sm1">
+            </div>
+        </div>
+        <div class="postrow">
+            <div class="base1">
+                <label>Nội thất:</label>
+            </div>
+            <div class="base3">
+                <textarea style="width: 100%; height: 150px; float: left; font-size: 13px;" pInputTextarea [(ngModel)]="motanoithat"></textarea>
+            </div>
+        </div>
+        <div class="postrow">
+            <div class="base1">
+                <label>Thông tin pháp lý:</label>
+            </div>
+            <div class="base3">
+                <textarea style="width: 100%; height: 100px; float: left; font-size: 13px;"  maxlength="250"
+                placeholder="Ví dụ: Đã có sổ đỏ. Đã có sổ hồng. Đã được phê duyệt quyết định đầu tư..." pInputTextarea [(ngModel)]="ttphaply"></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="rowHeader">
+        <h2>Hình ảnh</h2>
+    </div>
+    <div class="rowContent">
+        <p-fileUpload name="demo[]"   [showUploadButton]="false" cancelLabel="Hủy" chooseLabel="Chọn ảnh"
+            [multiple]="true" accept="image/*" [maxFileSize]="1000000">
+            <!-- <ng-template pTemplate="content">
+                <ul *ngIf="uploadedFiles.length">
+                    <li *ngFor="let file of uploadedFiles"> {{file.size}} bytes</li>
+                </ul>
+            </ng-template> -->
+    </p-fileUpload>
+    </div>
+    <div class="rowHeader">
+        <h2>Thông tin liên hệ</h2>
+    </div>
+    <div class="rowContent">
+        <div class="postrow" style="margin-top: 15px;">
+            <div class="base1">
+                <label >Tên liên hệ :</label>
+            </div>
+            <div class="base3">
+                <input type="text" [(ngModel)]="tenlh" style="height: 42px;" pInputText class="p-inputtext-sm2">
+            </div>
+        </div>
+        <div class="postrow">
+            <div class="base1">
+                <label >Địa chỉ :</label>
+            </div>
+            <div class="base3">
+                <input type="text" [(ngModel)]="dclh" style="height: 42px;" pInputText class="p-inputtext-sm2">
+            </div>
+        </div>
+        <div class="postrow">
+            <div class="base1">
+                <label >Di động (*) :</label>
+            </div>
+            <div class="base3">
+                <input type="text" [(ngModel)]="sdt" style="height: 42px;" pInputText class="p-inputtext-sm2">
+            </div>
+        </div>
+        <div class="postrow">
+            <div class="base1">
+                <label >Email :</label>
+            </div>
+            <div class="base3">
+                <input type="text" [(ngModel)]="email" style="height: 42px;" pInputText class="p-inputtext-sm2">
+            </div>
+        </div>
+    </div>
+    <div class="rowHeader">
+        <h2>Lịch đăng tin</h2>
+    </div>
+    <div class="rowContent">
+        <div class="postrow" style="margin-top: 15px;">
+            <div class="base1">
+                <label >Loại tin đăng:</label>
+            </div>
+            <div class="base2">
+                <p-dropdown [style]="{'width': '100%'}" (onChange)="selectLT()"
+                [options]="Loaitin" [(ngModel)]="selectedLoaitin" optionLabel="ten"></p-dropdown>
+            </div>
+        </div>
+        <div class="postrow">
+            <div class="base1">
+                <label >Ngày bắt đầu:</label>
+            </div>
+            <div class="base2">
+                <p-calendar [style]="{'width': '100%'}"  [(ngModel)]="dateS" dateFormat="dd/mm/yy" [minDate]="mindateS" (onClose)="getdateE()"
+                [showIcon]="true" inputId="icon"></p-calendar>
+            </div>
+            <div class="base1">
+                <label >Ngày kết thúc:</label>
+            </div>
+            <div class="base4">
+                <p-calendar [style]="{'width': '100%'}"  [(ngModel)]="dateE" dateFormat="dd/mm/yy" [minDate]="mindateE" (onClose)="getNumday()"
+                [showIcon]="true" inputId="icon"></p-calendar>
+            </div>
+        </div>
+        <div class="postrow">
+            <div class="base1" style="width: 120px">
+                <label >Đơn giá đăng tin:</label>
+            </div>
+            <div class="base2" style="width: 200px;">
+                <label style="font-size: 15px; font-weight: bold; color: blue;">{{dongia}}</label>
+            </div>
+            <div class="base1">
+                <label >Số ngày:</label>
+            </div>
+            <div class="base4">
+                <label  style="font-size: 15px; font-weight: bold; color: blue;">{{numday}} Ngày</label>
+            </div>
+        </div>
+        <div class="postrow">
+            <div class="base1" style="width: 120px">
+                <label>Thành tiền:</label>
+            </div>
+            <div class="base2">
+                <label style="font-size: 15px; font-weight: bold; color: blue;">{{priceV}}</label>
+            </div>
+        </div>
+        <div class="postrow" *ngIf="testPrice==1" style="text-align: center;">
+            <label style="font-size: 15px; font-weight: bold; color: red; ">Số dư tài khoản của quý khách không đủ <br>
+            Vui lòng nạp thêm tiền vào tài khoản</label>
+        </div>
+    </div>
+    <div *ngIf="testPrice!=1" style="margin: auto;">
+        <p-button label="Đăng tin" (onClick)="onAdd()"></p-button>
+    </div>
+    <div *ngIf="testPrice==1" style="margin: auto;">
+        <p-button label="Đăng tin" [disabled] = "true"></p-button>
+    </div>
 </div>

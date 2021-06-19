@@ -5,7 +5,7 @@
             <div class="col-sm-12 col-md-5">
                 <div class="topbar-left">
                     <div class="topbar-text">
-                        
+
                     </div>
                 </div>
             </div>
@@ -13,9 +13,13 @@
                 <div class="list-unstyled topbar-right">
                     <ul class="topbar-link">
                         <li><a href="#" title="">Liên hệ chúng tôi</a></li>
-                        
-                        <li *ngIf="user!=null"><a (click)="logout()" title="Đăng xuất" style="font-weight: bold;">{{user.taiKhoan}}</a></li>
-                        <li *ngIf="id == null"><a [routerLink]="[ 'customer/login' ]" title="Đăng nhập">Đăng nhập</a></li>
+
+                        <li *ngIf="user!=null"><a (click)="logout()" title="Đăng xuất"
+                                style="font-weight: bold;" *ngIf="user.hoTen==''">{{user.taiKhoan}}</a>
+                                <a (click)="logout()" title="Đăng xuất"
+                                style="font-weight: bold;" *ngIf="user.hoTen!=''">{{user.hoTen}}</a></li>
+                        <li *ngIf="id == null"><a [routerLink]="[ 'customer/login' ]" title="Đăng nhập">Đăng nhập</a>
+                        </li>
                     </ul>
                     <ul class="topbar-sosmed">
                         <li>
@@ -45,89 +49,67 @@
         <div class="collapse navbar-collapse" id="main_nav99">
             <ul class="navbar-nav  mx-auto">
                 <li class="nav-item dropdown">
-                    <a class="nav-link active dropdown-toggle" href="#" data-toggle="dropdown"> Home </a>
-                    <ul class="dropdown-menu dropdown-menu-left animate fade-up">
-                        <li><a class="dropdown-item" href="/homepage-v1.html"> Home version one </a>
-                        </li>
-                        <li><a class="dropdown-item" href="homepage-v2.html"> Home version two </a></li>
-                        <li><a class="dropdown-item" href="/homepage-v3.html"> Home version three </a></li>
-                        <li><a class="dropdown-item" href="/homepage-v4.html"> Home version four </a></li>
-                        <li><a class="dropdown-item" href="/homepage-v5.html"> Home version five </a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"> Pages </a>
+                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"> Nhà đất bán/cho thuê </a>
                     <ul class="dropdown-menu animate fade-up">
 
-                        <li><a class="dropdown-item icon-arrow" href="#"> Property Listing </a>
+                        <li><a class="dropdown-item icon-arrow" href="#"> Nhà đất bán </a>
                             <ul class="submenu dropdown-menu  animate fade-up">
-                                <li><a class="dropdown-item" href="/listing-style-v1.html"> Style 1</a></li>
-                                <li><a class="dropdown-item" href="/listing-style-v2.html"> Style 2</a></li>
-                                <li><a class="dropdown-item" href="/listing-style-v3.html"> Style 3</a></li>
-                                <li><a class="dropdown-item" href="/listing-style-v4.html"> Style 4</a></li>
-                                <li><a class="dropdown-item" href="/listing-style-v5.html"> Style 5</a></li>
-                                <li><a class="dropdown-item icon-arrow" href="">Submenu item 3 </a>
-                                    <ul class="submenu dropdown-menu  animate fade-up">
-                                        <li><a class="dropdown-item" href="">Multi level 1</a></li>
-                                        <li><a class="dropdown-item" href="">Multi level 2</a></li>
-                                    </ul>
-                                </li>
-                                <li><a class="dropdown-item" href="">Submenu item 4</a></li>
-                                <li><a class="dropdown-item" href="">Submenu item 5</a></li>
+                                <div *ngFor="let item of ban">
+                                    <li><a class="dropdown-item" routerLink="/post/{{item.maLoaiBds}}">{{item.tenLoaiBds}}</a>
+                                    </li>
+                                </div>
                             </ul>
                         </li>
-                        <li><a class="dropdown-item icon-arrow" href="#"> Property single detail </a>
+                        <li><a class="dropdown-item icon-arrow" href="#"> Nhà đất cho thuê </a>
                             <ul class="submenu dropdown-menu  animate fade-up">
-                                <li><a class="dropdown-item" href="/single-detail-v1.html">Style 1</a></li>
-                                <li><a class="dropdown-item" href="/single-detail-v2.html">Style 2</a></li>
-                                <li><a class="dropdown-item" href="/single-detail-v3.html">Style 3</a></li>
-                                <li><a class="dropdown-item" href="/single-detail-v4.html">Style 4</a></li>
-                                <li><a class="dropdown-item" href="/single-detail-v5.html">Style 5</a></li>
+                                <div *ngFor="let item of thue">
+                                    <li><a class="dropdown-item" routerLink="/post/{{item.maLoaiBds}}">{{item.tenLoaiBds}}</a>
+                                    </li>
+                                </div>
                             </ul>
 
                         </li>
-
-                        <li><a class="dropdown-item icon-arrow" href="#"> Agent </a>
-                            <ul class="submenu dropdown-menu  animate fade-up">
-                                <li><a class="dropdown-item" href="/agents-v1.html">Style 1</a></li>
-                                <li><a class="dropdown-item" href="/agents-v2.html">Style 2</a></li>
-                                <li><a class="dropdown-item" href="/agents-detail.html">Agent detail</a></li>
-                            </ul>
-                        </li>
-                        <li><a class="dropdown-item icon-arrow" href="#"> Agency </a>
-                            <ul class="submenu dropdown-menu  animate fade-up">
-                                <li><a class="dropdown-item" href="/agency-v1.html">Style 1</a></li>
-                                <li><a class="dropdown-item" href="/agency-v2.html">Style 2</a></li>
-                                <li><a class="dropdown-item" href="/agency-detail.html">Agency detail</a></li>
-                            </ul>
-                        </li>
-                        <li><a class="dropdown-item" href="/about-us.html">About us </a>
-                        <li><a class="dropdown-item" href="/login.html">Login </a>
-                        <li><a class="dropdown-item" href="/register.html"> Register </a>
-                        <li><a class="dropdown-item" href="/contact.html"> Contact </a>
-                        <li><a class="dropdown-item" href="/404.html"> 404 Error </a>
                     </ul>
                 </li>
 
                 <li class="nav-item dropdown">
-                    <a class="nav-link active dropdown-toggle" href="#" data-toggle="dropdown"> Blog </a>
-                    <ul class="dropdown-menu dropdown-menu-left animate fade-up">
-                        <li><a class="dropdown-item" href="/blog.html"> Blog </a>
-                        </li>
-                        <li><a class="dropdown-item" href="/blog-single.html"> Blog Single </a></li>
+                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"> Cần mua - Cần thuê </a>
+                    <ul class="dropdown-menu animate fade-up">
 
+                        <li><a class="dropdown-item icon-arrow" href="#"> Nhà đất cần mua </a>
+                            <ul class="submenu dropdown-menu  animate fade-up">
+                                <div *ngFor="let item of ban">
+                                    <li><a class="dropdown-item" routerLink="/post/{{item.maLoaiBds}}">{{item.tenLoaiBds}}</a>
+                                    </li>
+                                </div>
+                            </ul>
+                        </li>
+                        <li><a class="dropdown-item icon-arrow" href="#"> Nhà đất cần thuê </a>
+                            <ul class="submenu dropdown-menu  animate fade-up">
+                                <div *ngFor="let item of thue">
+                                    <li><a class="dropdown-item" routerLink="/post/{{item.maLoaiBds}}">{{item.tenLoaiBds}}</a>
+                                    </li>
+                                </div>
+                            </ul>
+
+                        </li>
                     </ul>
                 </li>
+                
 
-                <li class="nav-item"><a class="nav-link" href="/contact.html"> contact </a></li>
+                <li class="nav-item">
+                    <a class="nav-link " routerLink="/"> Giới thiệu </a>
+                </li>
+
+                <li class="nav-item"><a class="nav-link" routerLink="/"> Tin tức </a></li>
             </ul>
 
 
             <!-- Search bar.// -->
             <ul class="navbar-nav">
                 <li>
-                    <a routerLink = "customer/add-post" class="btn btn-primary text-capitalize">
-                        <i class="fa fa-plus-circle mr-1"></i>  Đăng tin</a>
+                    <a routerLink="customer/add-post" class="btn btn-primary text-capitalize">
+                        <i class="fa fa-plus-circle mr-1"></i> Đăng tin</a>
                 </li>
             </ul>
             <!-- Search content bar.// -->
