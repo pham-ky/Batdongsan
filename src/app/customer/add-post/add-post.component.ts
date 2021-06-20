@@ -163,6 +163,11 @@ export class AddPostComponent implements OnInit {
       this.testPrice = 1;
     }
 
+    this.tenlh=this.user.hoTen;
+    this.dclh=this.user.diaChi;
+    this.sdt=this.user.sdt;
+    this.email=this.user.email;
+
     this._DCService
       .GetTinhTP()
       .pipe(first())

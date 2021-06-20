@@ -52,7 +52,7 @@
                     <a class="nav-link dropdown-toggle" routerLink="/post/list/all" data-toggle="dropdown"> Nhà đất bán/cho thuê </a>
                     <ul class="dropdown-menu animate fade-up">
 
-                        <li><a class="dropdown-item icon-arrow" href="#"> Nhà đất bán </a>
+                        <li><a class="dropdown-item icon-arrow" href="/"> Nhà đất bán </a>
                             <ul class="submenu dropdown-menu  animate fade-up">
                                 <div *ngFor="let item of ban">
                                     <li><a class="dropdown-item" routerLink="/post/list/{{item.maLoaiBds}}">{{item.tenLoaiBds}}</a>
@@ -60,7 +60,7 @@
                                 </div>
                             </ul>
                         </li>
-                        <li><a class="dropdown-item icon-arrow" href="#"> Nhà đất cho thuê </a>
+                        <li><a class="dropdown-item icon-arrow" href="/"> Nhà đất cho thuê </a>
                             <ul class="submenu dropdown-menu  animate fade-up">
                                 <div *ngFor="let item of thue">
                                     <li><a class="dropdown-item" routerLink="/post/list/{{item.maLoaiBds}}">{{item.tenLoaiBds}}</a>
