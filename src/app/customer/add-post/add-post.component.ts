@@ -61,7 +61,7 @@ export class AddPostComponent implements OnInit {
       { tendonvi: 'Thỏa thuận' },
       { tendonvi: 'Triệu' },
       { tendonvi: 'Tỷ' },
-      { tendonvi: 'Trăn nghìn/m2' },
+      { tendonvi: 'Trăm nghìn/m2' },
       { tendonvi: 'Triệu/m2' },
     ];
     this.Donvithue = [
