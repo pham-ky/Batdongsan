@@ -5,6 +5,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { PostListComponent } from './post-list/post-list.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {DropdownModule} from 'primeng/dropdown';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {SliderModule} from 'primeng/slider';
 
 export const prodRoute: Routes = [
   {
@@ -27,7 +30,11 @@ export const prodRoute: Routes = [
     CommonModule,
     RouterModule.forChild(prodRoute),
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    DropdownModule,
+    FormsModule,
+    ReactiveFormsModule,
+    SliderModule
   ]
 })
 export class PostModule { }
