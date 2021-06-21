@@ -14,10 +14,11 @@
                     <ul class="topbar-link">
                         <li><a href="#" title="">Danh sách yêu thích</a></li>
 
-                        <li *ngIf="user!=null"><a (click)="logout()" title="Đăng xuất"
-                                style="font-weight: bold;" *ngIf="user.hoTen==''">{{user.taiKhoan}}</a>
-                                <a (click)="logout()" title="Đăng xuất"
-                                style="font-weight: bold;" *ngIf="user.hoTen!=''">{{user.hoTen}}</a></li>
+                        <li *ngIf="user!=null">
+                            <a routerLink="/customer/baidang" style="font-weight: bold;" *ngIf="user.hoTen==''">{{user.taiKhoan}} </a>
+                            <a routerLink="/customer/baidang" style="font-weight: bold;" *ngIf="user.hoTen!=''">{{user.hoTen}} </a>
+                            <a (click)="logout()" title="Đăng xuất"><img src="../../../assets/img/logout.png" style="height: 30px;"></a>
+                        </li>
                         <li *ngIf="id == null"><a [routerLink]="[ 'customer/login' ]" title="Đăng nhập">Đăng nhập</a>
                         </li>
                     </ul>
@@ -49,13 +50,15 @@
         <div class="collapse navbar-collapse" id="main_nav99">
             <ul class="navbar-nav  mx-auto">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" routerLink="/post/list/all" data-toggle="dropdown"> Nhà đất bán/cho thuê </a>
+                    <a class="nav-link dropdown-toggle" routerLink="/post/list/all" data-toggle="dropdown"> Nhà đất
+                        bán/cho thuê </a>
                     <ul class="dropdown-menu animate fade-up">
 
                         <li><a class="dropdown-item icon-arrow" href="/"> Nhà đất bán </a>
                             <ul class="submenu dropdown-menu  animate fade-up">
                                 <div *ngFor="let item of ban">
-                                    <li><a class="dropdown-item" routerLink="/post/list/{{item.maLoaiBds}}">{{item.tenLoaiBds}}</a>
+                                    <li><a class="dropdown-item"
+                                            routerLink="/post/list/{{item.maLoaiBds}}">{{item.tenLoaiBds}}</a>
                                     </li>
                                 </div>
                             </ul>
@@ -63,7 +66,8 @@
                         <li><a class="dropdown-item icon-arrow" href="/"> Nhà đất cho thuê </a>
                             <ul class="submenu dropdown-menu  animate fade-up">
                                 <div *ngFor="let item of thue">
-                                    <li><a class="dropdown-item" routerLink="/post/list/{{item.maLoaiBds}}">{{item.tenLoaiBds}}</a>
+                                    <li><a class="dropdown-item"
+                                            routerLink="/post/list/{{item.maLoaiBds}}">{{item.tenLoaiBds}}</a>
                                     </li>
                                 </div>
                             </ul>
@@ -79,7 +83,8 @@
                         <li><a class="dropdown-item icon-arrow" href="#"> Nhà đất cần mua </a>
                             <ul class="submenu dropdown-menu  animate fade-up">
                                 <div *ngFor="let item of ban">
-                                    <li><a class="dropdown-item" routerLink="/post/list/{{item.maLoaiBds}}">{{item.tenLoaiBds}}</a>
+                                    <li><a class="dropdown-item"
+                                            routerLink="/post/list/{{item.maLoaiBds}}">{{item.tenLoaiBds}}</a>
                                     </li>
                                 </div>
                             </ul>
@@ -87,7 +92,8 @@
                         <li><a class="dropdown-item icon-arrow" href="#"> Nhà đất cần thuê </a>
                             <ul class="submenu dropdown-menu  animate fade-up">
                                 <div *ngFor="let item of thue">
-                                    <li><a class="dropdown-item" routerLink="/post/list/{{item.maLoaiBds}}">{{item.tenLoaiBds}}</a>
+                                    <li><a class="dropdown-item"
+                                            routerLink="/post/list/{{item.maLoaiBds}}">{{item.tenLoaiBds}}</a>
                                     </li>
                                 </div>
                             </ul>
@@ -95,7 +101,7 @@
                         </li>
                     </ul>
                 </li>
-                
+
 
                 <li class="nav-item">
                     <a class="nav-link " routerLink="/"> Giới thiệu </a>

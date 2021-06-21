@@ -11,7 +11,7 @@ export class BaseComponent {
       this._route = injector.get(ActivatedRoute);
       } 
    public loadScripts() {
-         this.renderExternalScript('./assets/js/main.js').onload = () => {
+         this.renderExternalScript('./assets/js/index.bundle.js').onload = () => {
          }
        }
    public renderExternalScript(src: string): HTMLScriptElement {

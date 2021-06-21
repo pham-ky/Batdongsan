@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injector, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { map, switchMap } from 'rxjs/operators';
+import { BaseComponent } from 'src/app/lib/base-component';
 import { PostService } from 'src/app/lib/post.service';
 
 @Component({
@@ -8,11 +9,17 @@ import { PostService } from 'src/app/lib/post.service';
   templateUrl: './post-detail.component.html',
   styleUrls: ['./post-detail.component.css']
 })
-export class PostDetailComponent implements OnInit {
+export class PostDetailComponent extends BaseComponent implements OnInit {
 
   post: any;
   constructor(private activatedRoute: ActivatedRoute,
-    private _postService : PostService) { }
+    private _postService : PostService,
+    injector: Injector) { 
+      super(injector);
+    }
+    ngAfterViewInit() { 
+      this.loadScripts();
+    }
 
   ngOnInit(): void {
     this.activatedRoute.paramMap

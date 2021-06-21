@@ -57,6 +57,10 @@ export class PostListComponent extends BaseComponent implements OnInit {
       { huong: 'Đông-Nam' },
     ];
   }
+  
+  ngAfterViewInit() { 
+    this.loadScripts();
+  }
 
   TinhTP: TinhTP[] | any;
   QH: QH[] | any;

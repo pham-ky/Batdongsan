@@ -12,13 +12,16 @@ import {HttpClientModule} from '@angular/common/http';
 import {CalendarModule} from 'primeng/calendar';
 import {ButtonModule} from 'primeng/button';
 import { NaptienComponent } from './naptien/naptien.component';
+import { ListPostComponent } from './list-post/list-post.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
     CustomerComponent,
     AddPostComponent,
     LoginComponent,
-    NaptienComponent
+    NaptienComponent,
+    ListPostComponent
   ],
   imports: [
     CommonModule,
@@ -30,7 +33,8 @@ import { NaptienComponent } from './naptien/naptien.component';
     FileUploadModule,
     HttpClientModule,
     CalendarModule,
-    ButtonModule
+    ButtonModule,
+    NgbModule
   ]
 })
 export class CustomerModule { }
