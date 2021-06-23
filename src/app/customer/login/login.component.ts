@@ -30,6 +30,7 @@ export function comparePassword(c: AbstractControl) {
 })
 export class LoginComponent implements OnInit {
 
+  title='Đăng nhập'
   formLogin: FormGroup| any;
   constructor(private fb: FormBuilder,
     private userService: UserService,

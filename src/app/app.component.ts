@@ -7,7 +7,7 @@ import { BaseComponent } from './lib/base-component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent extends BaseComponent implements OnInit, AfterViewInit{
-  title = 'BatdongsanUser';
+
   public _renderer: any;
   
   constructor(injector: Injector) {

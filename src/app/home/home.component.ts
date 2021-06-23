@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
 
   constructor() { }
-  title = "Trang chủ - Bất động sản";
+  title = 'Tìm Bất động sản - Trang chủ';
   ngOnInit(): void {
     
   }

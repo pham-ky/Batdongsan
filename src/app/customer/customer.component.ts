@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { first } from 'rxjs/operators';
 import { UserService } from '../lib/user.service';
 
 @Component({
@@ -8,15 +9,23 @@ import { UserService } from '../lib/user.service';
 })
 export class CustomerComponent implements OnInit {
 
+  user1: any;
   user: any;
   constructor(private _user: UserService) { }
 
   ngOnInit(): void {
     this._user.user$.subscribe((res)=> {
-      this.user = res;
-      this.user.soDuTk = this.user.soDuTk.toLocaleString('it-IT', { style: 'currency', currency: 'VND' });
+      this.user1 = res;
+      // this.user.soDuTk = this.user.soDuTk.toLocaleString('it-IT', { style: 'currency', currency: 'VND' });
       
     });
+    this._user
+    .getUserId(this.user1.maTk)
+    .pipe(first())
+    .subscribe((res)=>{
+      this.user=res;
+      this.user.soDuTk = this.user.soDuTk.toLocaleString('it-IT', { style: 'currency', currency: 'VND' });
+    })
   }
 
 }

@@ -42,4 +42,8 @@ export class UserService {
     localStorage.removeItem('user');
     this.userLogin.next('');
   }
+  getUserId(id:any){
+    const url = `${this.API_URL}/getUser/${id}`;
+    return this.http.get(url);
+  }
 }

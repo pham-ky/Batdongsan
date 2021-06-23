@@ -9,6 +9,7 @@ import { UserService } from 'src/app/lib/user.service';
 })
 export class ListPostComponent implements OnInit {
 
+  title='Quản lý bài đăng'
   list: any;
   page: any;
   totalItems: any;

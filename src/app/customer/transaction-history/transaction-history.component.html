@@ -1,0 +1,32 @@
+<title>{{title}}</title>
+<div class="row no-gutters">
+    <div class="rowHeader">
+        <h2>Lịch sử giao dịch</h2>
+    </div>
+    <div class="rowContent">
+        <h6 style="margin-left: 5%; margin-top: 15px; margin-bottom: 20px;">Số dư tài khoản: {{user.soDuTk}}</h6>
+        <table>
+            <thead>
+                <th>STT</th>
+                <th>Hình thức</th>
+                <th>Mã tin</th>
+                <th>Số tiền</th>
+                <th>Ngày</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of list, index as i">
+                    <td style="text-align: center;">{{i+1}}</td>
+                    <td style="text-align: center;">Đăng bài</td>
+                    <td style="text-align: center;"><a routerLink="/post/detail/{{item.maBaiDang}}">{{item.maBaiDang}}</a></td>
+                    <td style="text-align: center;">- {{item.thanhTien}}</td>
+                    <td style="text-align: center;">{{item.ngayThanhToan|date:'shortDate'}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div style="position: relative;margin-left: 40%;">
+            <ngb-pagination [collectionSize]="totalItems" [pageSize]="6" [(page)]="page" [maxSize]="3" [rotate]="true"
+                (pageChange)="loadPage($event)">
+            </ngb-pagination>
+        </div>
+    </div>
+</div>

@@ -41,6 +41,7 @@ interface Loaitin {
 })
 export class AddPostComponent implements OnInit {
 
+  title='Thêm bài đăng';
   mindateS: any;
   mindateE: any;
   Donviban: any;

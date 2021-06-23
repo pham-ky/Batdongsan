@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { AuthGuard } from '../lib/auth.guard';
 import { NaptienComponent } from './naptien/naptien.component';
 import { ListPostComponent } from './list-post/list-post.component';
+import { TransactionHistoryComponent } from './transaction-history/transaction-history.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,10 @@ const routes: Routes = [
       {
         path: 'baidang',
         component: ListPostComponent,
+      },
+      {
+        path: 'lichsugiaodich',
+        component: TransactionHistoryComponent,
       },
     ]
   },

@@ -14,6 +14,7 @@ import {ButtonModule} from 'primeng/button';
 import { NaptienComponent } from './naptien/naptien.component';
 import { ListPostComponent } from './list-post/list-post.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { TransactionHistoryComponent } from './transaction-history/transaction-history.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AddPostComponent,
     LoginComponent,
     NaptienComponent,
-    ListPostComponent
+    ListPostComponent,
+    TransactionHistoryComponent
   ],
   imports: [
     CommonModule,

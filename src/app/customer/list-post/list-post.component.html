@@ -1,3 +1,4 @@
+<title>{{title}}</title>
 <div class="row no-gutters">
     <div class="rowHeader">
         <h2>Quản lý tin rao bán, cho thuê</h2>
@@ -25,7 +26,7 @@
             </tbody>
         </table>
         <div style="position: relative;margin-left: 40%;">
-            <ngb-pagination [collectionSize]="totalItems" [pageSize]="6" [(page)]="page" [maxSize]="10" [rotate]="true"
+            <ngb-pagination [collectionSize]="totalItems" [pageSize]="6" [(page)]="page" [maxSize]="3" [rotate]="true"
                 (pageChange)="loadPage($event)">
             </ngb-pagination>
         </div>

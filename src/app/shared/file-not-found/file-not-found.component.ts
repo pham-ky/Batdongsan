@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class FileNotFoundComponent implements OnInit {
 
   constructor() { }
-
+title='Không tìm thấy trang'
   ngOnInit(): void {
   }
 

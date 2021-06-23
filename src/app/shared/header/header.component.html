@@ -14,7 +14,7 @@
                     <ul class="topbar-link">
                         <li><a href="#" title="">Danh sách yêu thích</a></li>
 
-                        <li *ngIf="user!=null">
+                        <li *ngIf="id!=null">
                             <a routerLink="/customer/baidang" style="font-weight: bold;" *ngIf="user.hoTen==''">{{user.taiKhoan}} </a>
                             <a routerLink="/customer/baidang" style="font-weight: bold;" *ngIf="user.hoTen!=''">{{user.hoTen}} </a>
                             <a (click)="logout()" title="Đăng xuất"><img src="../../../assets/img/logout.png" style="height: 30px;"></a>
@@ -54,7 +54,7 @@
                         bán/cho thuê </a>
                     <ul class="dropdown-menu animate fade-up">
 
-                        <li><a class="dropdown-item icon-arrow" href="/"> Nhà đất bán </a>
+                        <li><a class="dropdown-item icon-arrow" routerLink="/post/list/ban"> Nhà đất bán </a>
                             <ul class="submenu dropdown-menu  animate fade-up">
                                 <div *ngFor="let item of ban">
                                     <li><a class="dropdown-item"
@@ -63,7 +63,7 @@
                                 </div>
                             </ul>
                         </li>
-                        <li><a class="dropdown-item icon-arrow" href="/"> Nhà đất cho thuê </a>
+                        <li><a class="dropdown-item icon-arrow" routerLink="/post/list/chothue"> Nhà đất cho thuê </a>
                             <ul class="submenu dropdown-menu  animate fade-up">
                                 <div *ngFor="let item of thue">
                                     <li><a class="dropdown-item"

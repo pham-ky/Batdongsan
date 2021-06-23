@@ -213,12 +213,12 @@
                                                 <div class="card__image-body">
                                                     <h6 class="text-capitalize">
                                                         <a
-                                                            routerLink="/post/detail/{{item.maBaiDang}}">{{item.tieuDe.substr(0,50)}}...</a>
+                                                            routerLink="/post/detail/{{item.maBaiDang}}">{{item.tieuDe.substr(0,45)}}...</a>
                                                     </h6>
 
                                                     <p class="text-capitalize">
                                                         <i class="fa fa-map-marker"></i>
-                                                        {{item.diaChiChiTiet}}
+                                                        {{item.diaChiChiTiet.substr(0,35)}}...
                                                     </p>
                                                     <ul class="list-inline card__content">
                                                         <li class="list-inline-item">
@@ -258,7 +258,7 @@
             </div>
         </div>
         <div style="top: 20px;position: relative;margin-left: 40%;">
-            <ngb-pagination [collectionSize]="totalItems" [pageSize]="6" [(page)]="page" [maxSize]="10" [rotate]="true"
+            <ngb-pagination [collectionSize]="totalItems" [pageSize]="6" [(page)]="page" [maxSize]="3" [rotate]="true"
                 (pageChange)="loadPage($event)">
             </ngb-pagination>
         </div>

@@ -1,0 +1,40 @@
+.rowHeader {
+    width: 100%;
+    background-color: #200985;
+    margin: 0;
+    padding: 0 0 0 5px;
+    height: 40px;
+}
+.rowHeader h2 {
+    color: white;
+    margin-left: 10px;
+    line-height: 40px;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-family: Calibri;
+}
+.rowContent {
+    width: 100%;
+    margin-bottom: 20px;
+    clear: both;
+    border: 1px solid #999;
+    text-rendering: optimizeLegibility;
+}
+table {
+    width: 96%;
+    margin-left: 2%;
+    border-collapse: collapse;
+}
+
+table td {
+    border: 1px solid black;
+    font-size: 14px;
+    padding: 10px;
+}
+
+table th {
+    border: 1px solid black;
+    font-size: 14px;
+    padding: 10px;
+    text-align: center;
+}

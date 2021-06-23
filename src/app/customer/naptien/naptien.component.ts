@@ -8,6 +8,7 @@ import { UserService } from 'src/app/lib/user.service';
 })
 export class NaptienComponent implements OnInit {
 
+  title='Nạp tiền'
   user: any;
   constructor(private _user: UserService) { }
 
