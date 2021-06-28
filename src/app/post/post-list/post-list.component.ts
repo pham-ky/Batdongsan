@@ -44,7 +44,7 @@ export class PostListComponent extends BaseComponent implements OnInit {
     private _LoaiHTSevice: LoaiHTService,
     private injector: Injector) {
     super(injector);
-      
+
     this.Huong = [
       { huong: 'KXĐ' },
       { huong: 'Đông' },
@@ -57,8 +57,8 @@ export class PostListComponent extends BaseComponent implements OnInit {
       { huong: 'Đông-Nam' },
     ];
   }
-  
-  ngAfterViewInit() { 
+
+  ngAfterViewInit() {
     this.loadScripts();
   }
 
@@ -74,13 +74,13 @@ export class PostListComponent extends BaseComponent implements OnInit {
   selectedHT: any;
   LoaiBds: any;
   selectedLoaiBds: any;
-  rangeValues: number[] = [200,500];
+  rangeValues: number[] = [100, 500];
   min: any;
   max: any;
-
+  title = "Danh sách bài đăng";
 
   ngOnInit(): void {
-    this.selectedHuongNha = "KXĐ";
+    // this.selectedHuongNha = "KXĐ";
 
     this._DCService
       .GetTinhTP()
@@ -95,14 +95,14 @@ export class PostListComponent extends BaseComponent implements OnInit {
       .subscribe((res) => {
         this.HinhThuc = res;
       });
-    this.selectedHT="";
-    this.selectedLoaiBds="";
-    this.selectedTinhTP="";
-    this.selectedQH="";
-    this.selectedXP="";
-    this.selectedHuongNha="";
-    this.min=this.rangeValues[0];
-    this.max=this.rangeValues[1];
+    // this.selectedHT = "";
+    // this.selectedLoaiBds = "";
+    // this.selectedTinhTP = "";
+    // this.selectedQH = "";
+    // this.selectedXP = "";
+    // this.selectedHuongNha = "";
+    this.min = this.rangeValues[0];
+    this.max = this.rangeValues[1];
 
 
     this.list = [];
@@ -110,35 +110,98 @@ export class PostListComponent extends BaseComponent implements OnInit {
 
     this._route.params.subscribe(params => {
       this.item_group_id = params['id'];
-      this._postService.postlist('/GetPosts', { page: this.page,  item_group_id: this.item_group_id })
+      this._postService.postlist('/GetPosts', { page: this.page, item_group_id: this.item_group_id })
         .subscribe(res => {
           this.list = res.data;
           this.totalItems = res.totalItems;
-          
+
         }, err => { });
     });
   }
   loadPage(page: any) {
 
+    
+    this.selectedHT = this.selectedHT != undefined ? this.selectedHT : "";
+    this.selectedLoaiBds = this.selectedLoaiBds != undefined ? this.selectedLoaiBds : "";
+    this.selectedTinhTP = this.selectedTinhTP != undefined ? this.selectedTinhTP : "";
+    this.selectedQH = this.selectedQH != undefined ? this.selectedQH : "";
+    this.selectedXP = this.selectedXP != undefined ? this.selectedXP : "";
+    this.selectedHuongNha = this.selectedHuongNha != undefined ? this.selectedHuongNha : "";
+    var loai: any;
+    var hinhthuc: any;
+    var ht: any;
+    var tinh: any;
+    var huyen: any;
+    var xa: any;
+    var huongnha: any;
+    loai = this.selectedLoaiBds.maLoaiBds != undefined ? this.selectedLoaiBds.maLoaiBds : "";
+    this._route.params.subscribe(params => { ht = params["id"] });
+    hinhthuc = this.selectedHT.maHinhThuc != undefined ? this.selectedHT.maHinhThuc : ht;
+    
+    tinh = this.selectedTinhTP.maTp != undefined ? this.selectedTinhTP.maTp : "";
+    huyen = this.selectedQH.maQh != undefined ? this.selectedQH.maQh : "";
+    xa = this.selectedXP.maXp != undefined ? this.selectedXP.maXp : "";
+    huongnha = this.selectedHuongNha.huong != undefined ? this.selectedHuongNha.huong : "";
+    this.min = this.rangeValues[0];
+    this.max = this.rangeValues[1];
+    console.log(this.page, loai, hinhthuc, tinh, huyen, xa, huongnha, this.min, this.max);
+
     this._route.params.subscribe(params => {
-      let id = params['id'];
-      this._postService.postlist('/GetPosts', { page: this.page, item_group_id: this.item_group_id})
-      .subscribe(res => {
-        this.list = res.data;
-        this.totalItems = res.totalItems;
-      }, err => { });
+      this._postService.postlist('/Search', {
+        page: this.page, LoaiBds: loai, HinhThuc: hinhthuc,
+        Tinh: tinh, Huyen: huyen, Xa: xa, Huong: huongnha, min: this.min, max: this.max
+      })
+        .subscribe(res => {
+          this.list = res.data;
+          this.totalItems = res.totalItems;
+        }, err => { });
     });
+
+    // this._route.params.subscribe(params => {
+    //   let id = params['id'];
+    //   this._postService.postlist('/GetPosts', { page: this.page, item_group_id: this.item_group_id })
+    //     .subscribe(res => {
+    //       this.list = res.data;
+    //       this.totalItems = res.totalItems;
+    //     }, err => { });
+    // });
   }
 
-  search(){
+  search() {
+    this.selectedHT = this.selectedHT != undefined ? this.selectedHT : "";
+    this.selectedLoaiBds = this.selectedLoaiBds != undefined ? this.selectedLoaiBds : "";
+    this.selectedTinhTP = this.selectedTinhTP != undefined ? this.selectedTinhTP : "";
+    this.selectedQH = this.selectedQH != undefined ? this.selectedQH : "";
+    this.selectedXP = this.selectedXP != undefined ? this.selectedXP : "";
+    this.selectedHuongNha = this.selectedHuongNha != undefined ? this.selectedHuongNha : "";
+    var loai: any;
+    var hinhthuc: any;
+    var ht: any;
+    var tinh: any;
+    var huyen: any;
+    var xa: any;
+    var huongnha: any;
+    loai = this.selectedLoaiBds.maLoaiBds != undefined ? this.selectedLoaiBds.maLoaiBds : "";
+    this._route.params.subscribe(params => { ht = params["id"] });
+    hinhthuc = this.selectedHT.maHinhThuc != undefined ? this.selectedHT.maHinhThuc : ht;
+    tinh = this.selectedTinhTP.maTp != undefined ? this.selectedTinhTP.maTp : "";
+    huyen = this.selectedQH.maQh != undefined ? this.selectedQH.maQh : "";
+    xa = this.selectedXP.maXp != undefined ? this.selectedXP.maXp : "";
+    huongnha = this.selectedHuongNha.huong != undefined ? this.selectedHuongNha.huong : "";
+    this.min = this.rangeValues[0];
+    this.max = this.rangeValues[1];
+    console.log(this.page, loai, hinhthuc, tinh, huyen, xa, huongnha, this.min, this.max);
+
     this.page = 1;
     this._route.params.subscribe(params => {
-      this._postService.postlist('/Search', { page: this.page, item_group_id: this.selectedLoaiBds, HinhThuc: this.selectedHT, 
-      Tinh: this.selectedTinhTP, Huyen: this.selectedQH, Xa: this.selectedXP,Huong: this.selectedHuongNha, min: this.min, max: this.max})
-      .subscribe(res => {
-        this.list = res.data;
-        this.totalItems = res.totalItems;
-      }, err => { });
+      this._postService.postlist('/Search', {
+        page: this.page, LoaiBds: loai, HinhThuc: hinhthuc,
+        Tinh: tinh, Huyen: huyen, Xa: xa, Huong: huongnha, min: this.min, max: this.max
+      })
+        .subscribe(res => {
+          this.list = res.data;
+          this.totalItems = res.totalItems;
+        }, err => { });
     });
   }
 

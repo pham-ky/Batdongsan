@@ -30,7 +30,6 @@ export class PostDetailComponent extends BaseComponent implements OnInit {
     )
     .subscribe((res) => {
       this.post = res;
-      console.log(this.post);
       
     });  
   }

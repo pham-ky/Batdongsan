@@ -1,3 +1,4 @@
+<title>{{title}}</title>
 <div class="search__area bg__shadow">
     <div class="container">
         <div class="search__area-inner">
@@ -70,7 +71,7 @@
                 </div>
                 <div class="col-6 col-lg-3 col-md-3">
                     <div class="form-group">
-                        <p-dropdown [style]="{'width': '100%'}" [options]="Huong" [(ngModel)]="selectedHuongNha"
+                        <p-dropdown [style]="{'width': '100%'}" [options]="Huong" [(ngModel)]="selectedHuongNha" [showClear]="true"
                             placeholder="Hướng nhà" optionLabel="huong"></p-dropdown>
                     </div>
                 </div>
@@ -84,7 +85,7 @@
                 </div>
                 <div class="col-12 col-lg-3 col-md-3">
                     <div class="form-group">
-                        <button class="btn btn-primary text-uppercase btn-block"> Tìm kiếm <i
+                        <button class="btn btn-primary text-uppercase btn-block" (click)="search()"> Tìm kiếm <i
                                 class="fa fa-search ml-1"></i></button>
                     </div>
                 </div>
